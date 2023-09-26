@@ -11,7 +11,6 @@ export default function BackButton() {
   return (
     <View
       style={{
-        padding: 8,
         marginLeft: 10,
         backgroundColor: "white",
         borderRadius: 8,
@@ -20,6 +19,8 @@ export default function BackButton() {
       }}
     >
       <Pressable
+        android_ripple={{ color: "#C3C3C3" }}
+        style={{ padding: 8 }}
         onPress={() => {
           if (navigation.canGoBack()) {
             navigation.navigate("Menu");

@@ -21,8 +21,8 @@ export default function COSButton({
         borderRadius: 8,
         width: 32,
         height: 32,
-        borderWidth:1,
-        borderColor: Colors.borderColor,
+    
+   
         justifyContent: "center",
         alignItems: "center",
         overflow: "hidden",
@@ -42,7 +42,7 @@ export default function COSButton({
           };
         }}
       >
-        <Icon size={23} color={no && no <= 1 ? "#E1E5E9" : color} />
+        <Icon size={16} color={no && no <= 1 ? "#E1E5E9" : color} />
       </Pressable>
     </View>
   );
