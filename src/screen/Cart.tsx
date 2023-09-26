@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
-import { View, Text, FlatList, BackHandler } from "react-native";
+import { View, Text, FlatList, BackHandler, ImageSourcePropType } from "react-native";
 import {
   CartNavigationProp,
   CartProp,
@@ -15,11 +15,13 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import CartFooter from "../components/Cart/CartFooter";
 import AnimatedScreen from "../components/Global/AnimatedScreen";
+import { useAppSelector } from "../../store/hooks/hooks";
 
 export default function Cart({ navigation, route }: CartProp) {
   const stackNavigation = useNavigation<HomeNavigationProp>();
   const [id, setId] = useState<number | undefined>(undefined);
-  console.log("🚀 ~ file: Cart.tsx:12 ~ Cart ~ id:", id);
+  const cartData = useAppSelector((state) => state.cart);
+  console.log("🚀 ~ file: Cart.tsx:24 ~ Cart ~ cartData:", cartData);
 
   useFocusEffect(
     useCallback(() => {
@@ -51,18 +53,27 @@ export default function Cart({ navigation, route }: CartProp) {
 
   const data = [0, 1, 2, 3];
 
-  const renderItem = () => {
-    return <CartCard />;
+  const renderItem = ({
+    item,
+  }: {
+    item: {
+      id: number;
+      quantity: number;
+      title: string;
+    };
+  }) => {
+    return <CartCard quantity={item.quantity} id={item.id} title={item.title} />;
   };
 
   return (
     <AnimatedScreen style={{ flex: 1 }}>
       <FlatList
-        data={data}
+        data={cartData.cart}
+        extraData={cartData.cart}
         renderItem={renderItem}
         contentContainerStyle={{ padding: 24, gap: 24 }}
       />
-      <CartFooter total={data.length} />
+      <CartFooter  />
     </AnimatedScreen>
   );
 }

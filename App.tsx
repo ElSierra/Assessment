@@ -20,7 +20,8 @@ import {
 
 import Navigation from "./src/routes/Navigation";
 import { Colors } from "./src/colors";
-
+import { Provider } from "react-redux";
+import { store } from "./store/store"
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === "dark";
 
@@ -31,7 +32,9 @@ function App(): JSX.Element {
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backgroundColor }}>
-      <Navigation />
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
     </SafeAreaView>
   );
 }

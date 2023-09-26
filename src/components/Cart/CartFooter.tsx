@@ -1,12 +1,22 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { formatCurrency } from "../../util/money";
 import { Colors } from "../../colors";
 import Button from "../Global/Button";
+import { useAppSelector } from "../../../store/hooks/hooks";
 
-export default function CartFooter({ total }: { total: number }) {
+export default function CartFooter() {
   const bottomHeight = useBottomTabBarHeight();
+  const cartData = useAppSelector((state) => state.cart);
+
+  const total = useMemo(() => {
+    return cartData.cart.reduce(
+      (accumulator, item) => accumulator + item.quantity,
+      0
+    );
+  }, [cartData.cart]);
+
   return (
     <View
       style={{

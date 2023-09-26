@@ -19,6 +19,8 @@ import IconButton from "../Global/IconButton";
 import { HeartIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "../../../types/navigation";
+import { useAppDispatch } from "../../../store/hooks/hooks";
+import { addToCart } from "../../../store/slice/cart";
 const { width, height } = Dimensions.get("screen");
 
 export default function Card({
@@ -30,8 +32,9 @@ export default function Card({
   image: ImageSourcePropType;
   id: number;
 }) {
+  console.log("🚀 ~ file: Card.tsx:35 ~ image:", image)
   const navigation = useNavigation<any>();
-
+  const dispatch = useAppDispatch();
   const handleNavigation = () => {
     navigation.navigate("Order", { id });
   };
@@ -67,6 +70,9 @@ export default function Card({
             <Button
               onPress={() => {
                 navigation.navigate("Cart");
+                dispatch(
+                  addToCart({ id,  title: text, quantity: 1 })
+                );
               }}
               Icon={ShoppingBagIconOutline}
               title="Add to cart"

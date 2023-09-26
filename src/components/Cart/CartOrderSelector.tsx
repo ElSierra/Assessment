@@ -1,17 +1,32 @@
 import { View, Text } from "react-native";
 import OASButton from "./COSButton";
 import { MinusIcon } from "react-native-heroicons/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PlusIcon } from "react-native-heroicons/outline";
 import { Colors } from "../../colors";
+import { useAppDispatch } from "../../../store/hooks/hooks";
+import { decreaseQuantity, increaseQuantity } from "../../../store/slice/cart";
 
-export default function CartOrderSelector() {
+export default function CartOrderSelector({
+  quantity,
+  id,
+}: {
+  quantity: number;
+  id: number;
+}) {
+  const dispatch = useAppDispatch();
   const [no, setNo] = useState(1);
+
+  useEffect(() => {
+    setNo(quantity);
+  }, [quantity]);
   const handleIncrease = () => {
+    dispatch(increaseQuantity({ id }));
     setNo(no + 1);
   };
   const handleDecrease = () => {
     if (no > 1) {
+      dispatch(decreaseQuantity({ id }));
       setNo(no - 1);
     }
   };
@@ -30,6 +45,7 @@ export default function CartOrderSelector() {
         onPress={handleDecrease}
       />
       <Text
+        key={`${id}${quantity}`}
         style={{
           fontFamily: "Poppins-Medium",
           fontSize: 14,
