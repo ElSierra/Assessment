@@ -40,7 +40,7 @@ export default function Navigation() {
           name="Main"
           options={{
             headerShown: false,
-            
+
             contentStyle: { backgroundColor: Colors.backgroundColor },
           }}
           component={BottomNavigation}
@@ -70,6 +70,7 @@ const BottomNavigation = () => {
           tabBarIconStyle: { color: Colors.primary, elevation: 0 },
           headerStyle: {
             elevation: 0,
+            borderBottomWidth: 0.5,
             backgroundColor: Colors.backgroundColor,
           },
           tabBarActiveTintColor: Colors.primary,
@@ -86,7 +87,6 @@ const BottomNavigation = () => {
             position: "absolute",
             borderColor: Colors.borderColor,
             borderRadius: 8,
-
             borderWidth: 0.1,
             elevation: 0,
           },
@@ -116,16 +116,7 @@ const BottomNavigation = () => {
       }}
     >
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen
-        name="Menu"
-        component={Menu}
-        options={{
-          headerStyle: {
-            borderBottomWidth: 0.5,
-            backgroundColor: Colors.backgroundColor,
-          },
-        }}
-      />
+      <Tab.Screen name="Menu" component={Menu} />
       <Tab.Screen name="Cart" component={Cart} />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>

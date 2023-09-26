@@ -24,9 +24,12 @@ export default function SearchBar() {
         style={{
           width: "100%",
           fontSize: 18,
+
           fontFamily: "Poppins-Regular",
           includeFontPadding: false,
         }}
+        cursorColor={Colors.primaryText}
+        placeholderTextColor={"grey"}
         placeholder="Search"
       />
     </View>

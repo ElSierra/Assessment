@@ -9,6 +9,7 @@ import CartCard from "../components/Cart/CartCard";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import CartFooter from "../components/Cart/CartFooter";
+import AnimatedScreen from "../components/Global/AnimatedScreen";
 
 export default function Cart({ navigation, route }: CartProp) {
   const stackNavigation = useNavigation<HomeNavigationProp>();
@@ -37,13 +38,13 @@ export default function Cart({ navigation, route }: CartProp) {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <AnimatedScreen style={{ flex: 1 }}>
       <FlatList
         data={data}
         renderItem={renderItem}
         contentContainerStyle={{ padding: 24, gap: 24 }}
       />
       <CartFooter total={data.length} />
-    </View>
+    </AnimatedScreen>
   );
 }

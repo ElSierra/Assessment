@@ -8,6 +8,7 @@ import {
 import Card from "../components/Menu/Card";
 import { DummyData } from "../../data/dummyData";
 import SearchBar from "../components/Menu/SearchBar";
+import AnimatedScreen from "../components/Global/AnimatedScreen";
 
 export default function Menu() {
   const renderItem = ({
@@ -16,13 +17,13 @@ export default function Menu() {
     item: { id: number; title: string; image: ImageSourcePropType };
   }) => <Card text={item.title} id={item.id} image={item.image} />;
   return (
-    <View style={style.root}>
-      <View style={{ padding: 10, paddingHorizontal: 24, width: "100%" }}>
+    <AnimatedScreen style={style.root}>
+      <View style={{ paddingTop: 16,paddingBottom:6, paddingHorizontal: 24, width: "100%" }}>
         <SearchBar />
       </View>
 
       <FlatList
-        indicatorStyle={"white"}
+    
         data={DummyData}
         renderItem={renderItem}
         numColumns={2}
@@ -33,7 +34,7 @@ export default function Menu() {
           alignItems: "center",
         }}
       />
-    </View>
+    </AnimatedScreen>
   );
 }
 

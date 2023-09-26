@@ -14,6 +14,7 @@ export default function Order({ navigation, route }: OrderProp) {
   const { id } = route.params;
   const data = DummyData.find((data) => data.id === id);
   return (
+    
     <ScrollView
       style={style.root}
       contentContainerStyle={{ paddingBottom: 100 }}
