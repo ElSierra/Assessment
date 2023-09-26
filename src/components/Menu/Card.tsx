@@ -30,7 +30,8 @@ export default function Card({
   image: ImageSourcePropType;
   id: number;
 }) {
-  const navigation = useNavigation<HomeNavigationProp>();
+  const navigation = useNavigation<any>();
+
   const handleNavigation = () => {
     navigation.navigate("Order", { id });
   };
@@ -63,7 +64,13 @@ export default function Card({
               </View>
             </View>
 
-            <Button Icon={ShoppingBagIconOutline} title="Add to cart" />
+            <Button
+              onPress={() => {
+                navigation.navigate("Cart");
+              }}
+              Icon={ShoppingBagIconOutline}
+              title="Add to cart"
+            />
           </View>
           <View
             style={{

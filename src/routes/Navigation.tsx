@@ -64,10 +64,12 @@ export default function Navigation() {
 const BottomNavigation = () => {
   return (
     <Tab.Navigator
+      initialRouteName="Menu"
       sceneContainerStyle={{ backgroundColor: Colors.backgroundColor }}
       screenOptions={({ navigation, route }) => {
         return {
           tabBarIconStyle: { color: Colors.primary, elevation: 0 },
+
           headerStyle: {
             elevation: 0,
             borderBottomWidth: 0.5,

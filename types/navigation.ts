@@ -21,3 +21,4 @@ export type OrderNavigationProp = NavigationProp<RootStackParamList, "Order">;
 export type OrderProp = NativeStackScreenProps<RootStackParamList, "Order">;
 export type HomeProp = NativeStackScreenProps<RootStackParamList, "Main">;
 export type CartProp = BottomTabScreenProps<BottomRootStackParamList, "Cart">;
+export type CartNavigationProp = NavigationProp<BottomRootStackParamList, "Cart">;

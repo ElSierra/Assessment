@@ -53,7 +53,7 @@ export default function Details({ title }: { title?: string }) {
           numberOfLines={readMore ? undefined : 5}
           ellipsizeMode="clip"
           onTextLayout={handleTextLayout}
-          style={{ fontSize: 12, fontFamily: "Poppins-Medium",color:Colors.primaryText }}
+          style={{ fontSize: 12, fontFamily: "Poppins-Medium",color:Colors.primaryText,width:"100%" }}
         >
           Rare Eat Puff Puff Mix can be made into a deep-fried dough. They are
           made from yeast dough, shaped into balls and deep-fried until golden

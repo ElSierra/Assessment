@@ -1,5 +1,5 @@
-import { View, Text, Pressable } from "react-native";
-import React from "react";
+import { View, Text, Pressable, BackHandler } from "react-native";
+import React, { useEffect } from "react";
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "../../../types/navigation";
@@ -7,6 +7,19 @@ import { Colors } from "../../colors";
 
 export default function BackButton() {
   const navigation = useNavigation<any>();
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate("Menu");
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
 
   return (
     <View

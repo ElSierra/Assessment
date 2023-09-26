@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useLayoutEffect, useState } from "react";
-import { View, Text, FlatList } from "react-native";
-import { CartProp, HomeNavigationProp, HomeProp } from "../../types/navigation";
+import { View, Text, FlatList, BackHandler } from "react-native";
+import {
+  CartNavigationProp,
+  CartProp,
+  HomeNavigationProp,
+  HomeProp,
+} from "../../types/navigation";
 import BackToOrderButton from "../components/Order/BackToOrderButton";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import Button from "../components/Global/Button";
@@ -26,9 +31,22 @@ export default function Cart({ navigation, route }: CartProp) {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => {
-        if (id || id === 0) return <BackToOrderButton id={id} />;
+        return <BackToOrderButton id={id} />;
       },
     });
+    const backAction = () => {
+      id || id === 0
+        ? stackNavigation.navigate("Order", { id })
+        : navigation.navigate("Menu");
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
   }, [id]);
 
   const data = [0, 1, 2, 3];
