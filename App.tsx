@@ -8,6 +8,7 @@
 import React from "react";
 import type { PropsWithChildren } from "react";
 import {
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -25,16 +26,16 @@ function App(): JSX.Element {
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex:1,
+    flex: 1,
   };
-
+  StatusBar.setBarStyle("dark-content");
+  if (Platform.OS === "android") {
+    StatusBar.setBackgroundColor("rgba(0,0,0,0)");
+    StatusBar.setTranslucent(true);
+  }
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? "light-content" : "dark-content"}
-        backgroundColor="white"
-      />
-      <Navigation/>
+      <Navigation />
     </SafeAreaView>
   );
 }

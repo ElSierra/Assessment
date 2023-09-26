@@ -21,7 +21,11 @@ import {
   Squares2X2Icon as Square2StackIconOutline,
   ShoppingBagIcon as ShoppingBagIconOutline,
 } from "react-native-heroicons/outline";
+
 import { Colors } from "../colors";
+import { ProfileIcon } from "../components/Global/Icon";
+import Order from "../screen/Order";
+import BackButton from "../components/Global/BackButton";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<BottomRootStackParamList>();
 export default function Navigation() {
@@ -33,6 +37,17 @@ export default function Navigation() {
           options={{ headerShown: false }}
           component={BottomNavigation}
         />
+        <Stack.Screen
+          name="Order"
+          options={{
+            headerTitle: "",
+            headerShown: true,
+            headerStyle: { backgroundColor: "transparent" },
+            headerShadowVisible: false,
+            headerLeft: () => <BackButton />,
+          }}
+          component={Order}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -41,15 +56,22 @@ export default function Navigation() {
 const BottomNavigation = () => {
   return (
     <Tab.Navigator
-      sceneContainerStyle={{ backgroundColor: "white" }}
+      sceneContainerStyle={{ backgroundColor: "#F9F9F9" }}
       screenOptions={({ navigation, route }) => {
         return {
           tabBarIconStyle: { color: Colors.primary, elevation: 0 },
+          headerStyle: { elevation: 0 },
           tabBarActiveTintColor: Colors.primary,
           tabBarInactiveTintColor: "gray",
           headerTitleAlign: "center",
-
-          tabBarStyle: { paddingBottom: 25, height: 83, padding: 8 },
+          tabBarLabelStyle: { fontFamily: "Poppins-Medium", fontSize: 14 },
+          headerTitleStyle: { fontFamily: "Poppins-Medium", fontSize: 18 },
+          tabBarStyle: {
+            paddingBottom: 25,
+            height: 83,
+            padding: 8,
+            elevation: 0,
+          },
           tabBarIcon: ({ focused, color, size }) => {
             if (route.name === "Home") {
               if (focused) {
@@ -68,13 +90,19 @@ const BottomNavigation = () => {
                 return <ShoppingBagIcon color={color} />;
               }
               return <ShoppingBagIconOutline color={color} />;
+            } else {
+              return <ProfileIcon color={color} size={size + 4} />;
             }
           },
         };
       }}
     >
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Menu" component={Menu} />
+      <Tab.Screen
+        name="Menu"
+        component={Menu}
+        options={{ headerStyle: { borderBottomWidth: 0.5 } }}
+      />
       <Tab.Screen name="Cart" component={Cart} />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
