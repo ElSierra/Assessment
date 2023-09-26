@@ -25,16 +25,24 @@ import {
 import { Colors } from "../colors";
 import { ProfileIcon } from "../components/Global/Icon";
 import Order from "../screen/Order";
-import BackButton from "../components/Global/BackButton";
+import BackButton from "../components/Order/BackButton";
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<BottomRootStackParamList>();
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          contentStyle: { backgroundColor: Colors.backgroundColor },
+        }}
+      >
         <Stack.Screen
           name="Main"
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            
+            contentStyle: { backgroundColor: Colors.backgroundColor },
+          }}
           component={BottomNavigation}
         />
         <Stack.Screen
@@ -56,20 +64,30 @@ export default function Navigation() {
 const BottomNavigation = () => {
   return (
     <Tab.Navigator
-      sceneContainerStyle={{ backgroundColor: "#F9F9F9" }}
+      sceneContainerStyle={{ backgroundColor: Colors.backgroundColor }}
       screenOptions={({ navigation, route }) => {
         return {
           tabBarIconStyle: { color: Colors.primary, elevation: 0 },
-          headerStyle: { elevation: 0 },
+          headerStyle: {
+            elevation: 0,
+            backgroundColor: Colors.backgroundColor,
+          },
           tabBarActiveTintColor: Colors.primary,
           tabBarInactiveTintColor: "gray",
           headerTitleAlign: "center",
           tabBarLabelStyle: { fontFamily: "Poppins-Medium", fontSize: 14 },
           headerTitleStyle: { fontFamily: "Poppins-Medium", fontSize: 18 },
+
           tabBarStyle: {
             paddingBottom: 25,
             height: 83,
+            backgroundColor: Colors.backgroundColor,
             padding: 8,
+            position: "absolute",
+            borderColor: Colors.borderColor,
+            borderRadius: 8,
+
+            borderWidth: 0.1,
             elevation: 0,
           },
           tabBarIcon: ({ focused, color, size }) => {
@@ -101,7 +119,12 @@ const BottomNavigation = () => {
       <Tab.Screen
         name="Menu"
         component={Menu}
-        options={{ headerStyle: { borderBottomWidth: 0.5 } }}
+        options={{
+          headerStyle: {
+            borderBottomWidth: 0.5,
+            backgroundColor: Colors.backgroundColor,
+          },
+        }}
       />
       <Tab.Screen name="Cart" component={Cart} />
       <Tab.Screen name="Account" component={Account} />

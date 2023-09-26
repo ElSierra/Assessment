@@ -26,7 +26,12 @@ export default function Menu() {
         data={DummyData}
         renderItem={renderItem}
         numColumns={2}
-        contentContainerStyle={{}}
+        style={{ width: "100%" }}
+        contentContainerStyle={{
+          justifyContent: "center",
+          paddingBottom:100,
+          alignItems: "center",
+        }}
       />
     </View>
   );

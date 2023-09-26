@@ -6,7 +6,7 @@ import { HomeNavigationProp } from "../../../types/navigation";
 import { Colors } from "../../colors";
 
 export default function BackButton() {
-  const navigation = useNavigation<HomeNavigationProp>();
+  const navigation = useNavigation<any>();
 
   return (
     <View
@@ -22,7 +22,7 @@ export default function BackButton() {
       <Pressable
         onPress={() => {
           if (navigation.canGoBack()) {
-            navigation.goBack();
+            navigation.navigate("Menu");
           }
         }}
       >

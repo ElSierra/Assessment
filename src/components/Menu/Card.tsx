@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React from "react";
 import { Colors } from "../../colors";
-import Button from "../Global/Button";
+import Button from "../Global/CartButton";
 import {
   ShoppingBagIcon as ShoppingBagIconOutline,
   HeartIcon as HeartIconOutline,

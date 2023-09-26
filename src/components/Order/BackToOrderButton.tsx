@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { HomeNavigationProp } from "../../../types/navigation";
 import { Colors } from "../../colors";
 
-export default function BackButton() {
+export default function BackToOrderButton({ id }: { id: number }) {
   const navigation = useNavigation<HomeNavigationProp>();
 
   return (
@@ -21,9 +21,7 @@ export default function BackButton() {
     >
       <Pressable
         onPress={() => {
-          if (navigation.canGoBack()) {
-            navigation.goBack();
-          }
+          navigation.navigate("Order", { id });
         }}
       >
         <ChevronLeftIcon color={"black"} size={20} />

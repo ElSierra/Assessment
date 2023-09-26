@@ -1,21 +1,20 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
 import { Colors } from "../../colors";
 import { ShoppingBagIcon as ShoppingBagIconOutline } from "react-native-heroicons/outline";
 import { ElementType } from "react";
 
-export default function Button({
+export default function ButtonOutlined({
   title,
   Icon,
-  onPress,
 }: {
   title: string;
   Icon?: ElementType;
-  onPress: () => void;
 }) {
   return (
     <View
       style={{
-        backgroundColor: Colors.primary,
+        borderWidth: 1,
+        borderColor: Colors.primary,
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
@@ -23,8 +22,20 @@ export default function Button({
         overflow: "hidden",
       }}
     >
-      <Pressable style={style.pressable} android_ripple={{ color: "#D7CFCF" }} onPress={onPress}>
-        <Text style={style.buttonText}>{title}</Text>
+      <Pressable
+        android_ripple={{ color: "#FF030342" }}
+        style={({ pressed }) => {
+          return [
+            style.pressable,
+            {
+              opacity: Platform.OS === "ios" && pressed ? 0.5 : 1,
+            },
+          ];
+        }}
+      >
+        <Text style={[style.buttonText, { color: Colors.primary }]}>
+          {title}
+        </Text>
       </Pressable>
     </View>
   );
@@ -42,7 +53,6 @@ const style = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     gap: 4,
-
     padding: 20,
     alignItems: "center",
     flexDirection: "row",

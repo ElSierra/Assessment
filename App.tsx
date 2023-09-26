@@ -18,23 +18,19 @@ import {
   View,
 } from "react-native";
 
-import { Colors } from "react-native/Libraries/NewAppScreen";
 import Navigation from "./src/routes/Navigation";
+import { Colors } from "./src/colors";
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === "dark";
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1,
-  };
   StatusBar.setBarStyle("dark-content");
   if (Platform.OS === "android") {
     StatusBar.setBackgroundColor("rgba(0,0,0,0)");
     StatusBar.setTranslucent(true);
   }
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backgroundColor }}>
       <Navigation />
     </SafeAreaView>
   );
