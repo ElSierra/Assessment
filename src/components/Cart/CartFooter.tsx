@@ -25,6 +25,7 @@ export default function CartFooter() {
         padding: 24,
         gap: 10,
         width: "100%",
+        backgroundColor:Colors.backgroundColor
       }}
     >
       <View

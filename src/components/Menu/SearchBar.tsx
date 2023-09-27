@@ -24,7 +24,7 @@ export default function SearchBar() {
         style={{
           width: "100%",
           fontSize: 18,
-
+          color: Colors.primaryText,
           fontFamily: "Poppins-Regular",
           includeFontPadding: false,
         }}

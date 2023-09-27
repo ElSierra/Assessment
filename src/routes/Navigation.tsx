@@ -69,7 +69,7 @@ const BottomNavigation = () => {
       screenOptions={({ navigation, route }) => {
         return {
           tabBarIconStyle: { color: Colors.primary, elevation: 0 },
-
+          tabBarHideOnKeyboard: true,
           headerStyle: {
             elevation: 0,
             borderBottomWidth: 0.5,

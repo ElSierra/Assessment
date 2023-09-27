@@ -71,7 +71,7 @@ export default function Cart({ navigation, route }: CartProp) {
         data={cartData.cart}
         extraData={cartData.cart}
         renderItem={renderItem}
-        contentContainerStyle={{ padding: 24, gap: 24 }}
+        contentContainerStyle={{ padding: 24, gap: 24, paddingBottom:400 }}
       />
       <CartFooter  />
     </AnimatedScreen>
