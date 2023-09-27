@@ -10,27 +10,34 @@ import { DummyData } from "../../data/dummyData";
 import SearchBar from "../components/Menu/SearchBar";
 import AnimatedScreen from "../components/Global/AnimatedScreen";
 
+type renderType = { id: number; title: string; image: ImageSourcePropType };
+
 export default function Menu() {
-  const renderItem = ({
-    item,
-  }: {
-    item: { id: number; title: string; image: ImageSourcePropType };
-  }) => <Card text={item.title} id={item.id} image={item.image} />;
+  const renderItem = ({ item }: { item: renderType }) => (
+    <Card text={item.title} id={item.id} image={item.image} />
+  );
+
   return (
     <AnimatedScreen style={style.root}>
-      <View style={{ paddingTop: 16,paddingBottom:6, paddingHorizontal: 24, width: "100%" }}>
+      <View
+        style={{
+          paddingTop: 16,
+          paddingBottom: 6,
+          paddingHorizontal: 24,
+          width: "100%",
+        }}
+      >
         <SearchBar />
       </View>
 
       <FlatList
-    
         data={DummyData}
         renderItem={renderItem}
         numColumns={2}
         style={{ width: "100%" }}
         contentContainerStyle={{
           justifyContent: "center",
-          paddingBottom:100,
+          paddingBottom: 100,
           alignItems: "center",
         }}
       />

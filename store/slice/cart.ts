@@ -28,16 +28,14 @@ const CartSlice = createSlice({
         title: string;
       }>
     ) => {
-      console.log("👺👺👺", action.payload);
       if (state.cart.some((cart) => cart.id === action.payload.id)) {
-        console.log("hererere");
         const index = state.cart.findIndex(
           (item) => item.id === action.payload.id
         );
         state.cart[index] = {
           id: action.payload.id,
           title: action.payload.title,
-          quantity: state.cart[index].quantity + 1,
+          quantity: state.cart[index].quantity + action.payload.quantity,
         };
         return;
       }

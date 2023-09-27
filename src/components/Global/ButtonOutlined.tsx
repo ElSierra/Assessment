@@ -1,15 +1,8 @@
 import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
 import { Colors } from "../../colors";
-import { ShoppingBagIcon as ShoppingBagIconOutline } from "react-native-heroicons/outline";
 import { ElementType } from "react";
 
-export default function ButtonOutlined({
-  title,
-  Icon,
-}: {
-  title: string;
-  Icon?: ElementType;
-}) {
+export default function ButtonOutlined({ title }: { title: string }) {
   return (
     <View
       style={{

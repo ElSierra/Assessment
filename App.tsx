@@ -21,9 +21,10 @@ import {
 import Navigation from "./src/routes/Navigation";
 import { Colors } from "./src/colors";
 import { Provider } from "react-redux";
-import { store } from "./store/store"
+import { store } from "./store/store";
+import { enableFreeze } from "react-native-screens";
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === "dark";
+  enableFreeze(true);
 
   StatusBar.setBarStyle("dark-content");
   if (Platform.OS === "android") {

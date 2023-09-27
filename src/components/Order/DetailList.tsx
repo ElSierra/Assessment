@@ -3,6 +3,7 @@ import React from "react";
 import { ChevronDownIcon } from "react-native-heroicons/solid";
 import { Colors } from "../../colors";
 
+
 export default function DetailList({
   isLast = false,
   text,

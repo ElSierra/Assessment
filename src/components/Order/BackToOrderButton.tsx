@@ -2,7 +2,7 @@ import { View, Text, Pressable, Alert, BackHandler } from "react-native";
 import React, { useEffect } from "react";
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
-import { HomeNavigationProp } from "../../../types/navigation";
+
 import { Colors } from "../../colors";
 
 export default function BackToOrderButton({ id }: { id?: number }) {

@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import {Pressable } from "react-native";
 import React, { ElementType, useState } from "react";
 import { Colors } from "../../colors";
 

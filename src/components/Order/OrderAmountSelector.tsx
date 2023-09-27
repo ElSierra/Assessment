@@ -5,16 +5,15 @@ import { useState } from "react";
 import { PlusIcon } from "react-native-heroicons/outline";
 import { Colors } from "../../colors";
 
-export default function OrderAmountSelector() {
-  const [no, setNo] = useState(1);
-  const handleIncrease = () => {
-    setNo(no + 1);
-  };
-  const handleDecrease = () => {
-    if (no > 1) {
-      setNo(no - 1);
-    }
-  };
+export default function OrderAmountSelector({
+  no,
+  handleIncrease,
+  handleDecrease,
+}: {
+  no: number;
+  handleIncrease: () => void;
+  handleDecrease: () => void;
+}) {
   return (
     <View
       style={{

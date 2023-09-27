@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native'
-
+import { View, Text } from "react-native";
+import AnimatedScreen from "../components/Global/AnimatedScreen";
 
 export default function Account() {
   return (
-    <View>
+    <AnimatedScreen style={{ justifyContent: "center",alignItems:"center" }}>
       <Text>Account</Text>
-    </View>
-  )
+    </AnimatedScreen>
+  );
 }

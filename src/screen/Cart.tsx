@@ -1,18 +1,11 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from "react";
-import { View, Text, FlatList, BackHandler, ImageSourcePropType } from "react-native";
-import {
-  CartNavigationProp,
-  CartProp,
-  HomeNavigationProp,
-  HomeProp,
-} from "../../types/navigation";
+import { useCallback, useEffect, useState } from "react";
+import { FlatList, BackHandler } from "react-native";
+import { CartProp, HomeNavigationProp } from "../../types/navigation";
 import BackToOrderButton from "../components/Order/BackToOrderButton";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import Button from "../components/Global/Button";
-import ButtonOutlined from "../components/Global/ButtonOutlined";
+
 import CartCard from "../components/Cart/CartCard";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+
 import CartFooter from "../components/Cart/CartFooter";
 import AnimatedScreen from "../components/Global/AnimatedScreen";
 import { useAppSelector } from "../../store/hooks/hooks";
@@ -62,7 +55,9 @@ export default function Cart({ navigation, route }: CartProp) {
       title: string;
     };
   }) => {
-    return <CartCard quantity={item.quantity} id={item.id} title={item.title} />;
+    return (
+      <CartCard quantity={item.quantity} id={item.id} title={item.title} />
+    );
   };
 
   return (
@@ -71,9 +66,9 @@ export default function Cart({ navigation, route }: CartProp) {
         data={cartData.cart}
         extraData={cartData.cart}
         renderItem={renderItem}
-        contentContainerStyle={{ padding: 24, gap: 24, paddingBottom:400 }}
+        contentContainerStyle={{ padding: 24, gap: 24, paddingBottom: 400 }}
       />
-      <CartFooter  />
+      <CartFooter />
     </AnimatedScreen>
   );
 }
